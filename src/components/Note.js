@@ -18,7 +18,7 @@ export default function Note() {
         ref_function.current.click()
         setNote({ eid: note._id, etitle: note.title, edescription: note.description, etag: note.tag })
         console.log(sNote.eid, sNote.etitle, sNote.edescription, sNote.etag)
-        
+
     }
 
     let onClick = (e) => {
@@ -67,13 +67,16 @@ export default function Note() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={() => { onClick(sNote.id) }} data-bs-dismiss="modal">Update Note</button>
+                            <button type="button" className="btn btn-primary" onClick={onClick} data-bs-dismiss="modal">Update Note</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="row my-3">
                 <h2>Your Notes </h2>
+                <div className="container mx-2 my-2">
+                    <h5>{notes.length === 0 && "No notes to display"}</h5>
+                </div>
                 {/* Looping over the notes  */}
                 {notes.map((note) => {
                     return <Noteitem key={note._id} note={note} updateNote={updateNote} />

@@ -3,6 +3,7 @@ import { Link ,useLocation} from "react-router-dom";
 
 function Navbar() {
 
+
   let location = useLocation();
 
 return (
@@ -22,8 +23,8 @@ return (
           </li>
         </ul>
         <form className="d-flex">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-outline-success" type="submit">Search</button>
+        <Link className="mx-1 btn btn-primary" to="/login" role="button">Login</Link>
+        <Link className="mx-1 btn btn-primary" to="/signup" role="button">SignUp</Link>
         </form>
       </div>
     </div>
