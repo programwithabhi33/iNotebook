@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Alert(props) {
-    return (
+    return (~
         <div>
             <div className={`alert alert-${props.type} alert-dismissible fade show`} role="alert">
                 <strong>Alert: </strong>{props.message}

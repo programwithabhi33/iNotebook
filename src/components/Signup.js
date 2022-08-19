@@ -1,33 +1,38 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 function Signup() {
 
-  let [credentials,setCredentials]= useState({name:"",email:"",password:"" ,retype:""})
+  let [credentials, setCredentials] = useState({ name: "", email: "", password: "", retype: "" })
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-    if(credentials.password===credentials.retype){
+    if (credentials.password === credentials.retype) {
 
-    const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
+      const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
         method: 'POST',
         headers: {
-            "Content-type": "application/json",
+          "Content-type": "application/json",
 
         },
         // Passing the arguments with JSON.stringify
-        body: JSON.stringify({name:credentials.name, email: credentials.email, password: credentials.password })
-    })
-    const res = await response.json()
-    console.log(res)
-    localStorage.setItem("authtoken", res.authToken)
-}
-else{
-  console.log("Retype password correctly")
-}
-}
-let onChange = (e) => {
+        body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+      })
+      const res = await response.json()
+      console.log(res)
+      if (res.success) {
+        localStorage.setItem("authtoken", res.authToken)
+      }
+      else{
+        alert("Invalid credentials")
+      }
+    }
+    else {
+      console.log("Retype password correctly")
+    }
+  }
+  let onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
-}
+  }
 
   return (
     <>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
     const [credentials, setCredentials] = useState({ email: "", password: "" })
-
+    let history = useNavigate();
     let handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -18,7 +18,13 @@ function Login() {
         })
         const res = await response.json()
         console.log(res)
-        localStorage.setItem("authtoken", res.authToken)
+        if(res.success){
+            localStorage.setItem("authtoken", res.authToken)
+            history("/")
+        }
+        else{
+            alert("Invalid credentials")
+        }
     }
     let onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
