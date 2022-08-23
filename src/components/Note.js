@@ -14,7 +14,7 @@ export default function Note() {
     const [sNote, setNote] = useState({ eid: "", etitle: "", edescription: "", etag: "" })
 
     const ref_function = useRef("")
-    const updateNote = (note) => {
+    const updateNote = (note) => { 
         ref_function.current.click()
         setNote({ eid: note._id, etitle: note.title, edescription: note.description, etag: note.tag })
         console.log(sNote.eid, sNote.etitle, sNote.edescription, sNote.etag)
