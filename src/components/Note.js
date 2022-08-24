@@ -68,7 +68,7 @@ export default function Note() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={onClick} data-bs-dismiss="modal">Update Note</button>
+                            <button disabled={sNote.etitle.length < 5 || sNote.edescription.length < 5} type="button" className="btn btn-primary" onClick={onClick} data-bs-dismiss="modal">Update Note</button>
                         </div>
                     </div>
                 </div>
