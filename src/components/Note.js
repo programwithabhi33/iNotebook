@@ -31,6 +31,7 @@ export default function Note() {
 
     }
 
+    // When the title and the description and the tag field change this function will fire and it will set the current state as it is and update targated name as key and its value in the state
     let onChange = (e) => {
         setNote({ ...sNote, [e.target.name]: e.target.value })
     }
