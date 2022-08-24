@@ -90,6 +90,7 @@ const NoteState = (props) => {
     const json = response.json()
     console.log(json)
 
+    // Updatin the note in the frontend 
     let newNotes = JSON.parse(JSON.stringify(notes))
     for (let index = 0; index < newNotes.length; index++) {
       const element = newNotes[index];
