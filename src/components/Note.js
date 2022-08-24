@@ -76,6 +76,7 @@ export default function Note() {
             <div className="row my-3">
                 <h2>Your Notes </h2>
                 <div className="container mx-2 my-2">
+                    {/* When we does not have the else condition we user the double & in the shorthand if condition */}
                     <h5>{notes.length === 0 && "No notes to display"}</h5>
                 </div>
                 {/* Looping over the notes  */}
