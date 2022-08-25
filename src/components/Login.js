@@ -3,7 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
     const [credentials, setCredentials] = useState({ email: "", password: "" })
+    // This is useNavigate hook provide you to redirect
     let history = useNavigate();
+
     let handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -20,6 +22,8 @@ function Login() {
         console.log(res)
         if(res.success){
             localStorage.setItem("authtoken", res.authToken)
+
+            // Redirecting to the "/" using the useNavigate hook
             history("/")
         }
         else{
