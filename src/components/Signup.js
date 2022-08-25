@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
 
   let [credentials, setCredentials] = useState({ name: "", email: "", password: "", retype: "" })
 
+  // This is useNavigate hook provide you to redirect
+  let history = useNavigate();
+
   let handleSubmit = async (e) => {
     e.preventDefault();
     if (credentials.password === credentials.retype) {
-
+      // Destructing 
+      const { name, email, password, } = credentials;
       const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
         method: 'POST',
         headers: {
@@ -15,14 +20,16 @@ function Signup() {
 
         },
         // Passing the arguments with JSON.stringify
-        body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+        body: JSON.stringify({ name, email, password })
       })
       const res = await response.json()
       console.log(res)
       if (res.success) {
         localStorage.setItem("authtoken", res.authToken)
+        history("/")
+
       }
-      else{
+      else {
         alert("Invalid credentials")
       }
     }
@@ -58,6 +65,9 @@ function Signup() {
           </div>
           <div className='button-div'>
             <button type="submit" className="btn btn-primary login-button">SignUp</button>
+          </div>
+          <div className='new-div'>
+            <Link to="/login">Already User Click Here</Link>
           </div>
         </form>
       </div>
