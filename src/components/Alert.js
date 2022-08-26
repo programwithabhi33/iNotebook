@@ -3,7 +3,7 @@ import React from 'react'
 export default function Alert(props) {
     // This function can help you to change first character of the given word to uppercase
     const toLowerCase = (word) => {
-        if(word == "danger"){
+        if(word === "danger"){
             word = "Error";
         }
         // Converting the whole word to lowercase

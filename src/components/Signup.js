@@ -45,7 +45,7 @@ function Signup(props) {
   return (
     <>
       <div className='main-form'>
-        <h2>SignUP</h2>
+        <h2 className='my-2'>SignUP to use the iNotebook</h2>
         <form className='login-form' onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>

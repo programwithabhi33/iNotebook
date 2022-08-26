@@ -20,7 +20,7 @@ const NoteState = (props) => {
       method: 'GET',
       headers: {
         "Content-type": "application/json",
-        "auth-token": localStorage.getItem('token'),
+        "auth-token": localStorage.getItem('authtoken'),
 
       },
     })
