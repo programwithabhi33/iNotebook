@@ -1,7 +1,7 @@
 import { React, useContext, useState } from 'react'
 import noteContext from '../context/notes/noteContext'
 
-export default function Addnote() {
+export default function Addnote(props) {
 
     //  Destructuring the addNote function that context provide
     let { addNote } = useContext(noteContext)
@@ -13,10 +13,11 @@ export default function Addnote() {
     let onClick = (e) => {
         e.preventDefault()
         if (note.title === "" || note.description === "") {
-            console.log("Note title is empty or note description is empty")
+            props.showAlert('Note Title is empty or Note Description is empty','danger');
         }
         else {
             addNote(note.title, note.description, note.tag)
+            props.showAlert("Note Addded Successfully",'success')
         }
         setNote({ title: "", description: "", tag: "" })
 

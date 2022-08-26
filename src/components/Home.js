@@ -1,13 +1,13 @@
 import Addnote from './Addnote'
 import Note from './Note'
 
-function Home() {
+function Home(props) {
 
 
   return (
     <>
-      <Addnote />
-      <Note />
+      <Addnote showAlert={props.showAlert} />
+      <Note showAlert={props.showAlert} />
     </>
   )
 }

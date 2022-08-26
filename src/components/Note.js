@@ -3,7 +3,7 @@ import { useHref } from 'react-router-dom';
 import noteContext from '../context/notes/noteContext'
 import Noteitem from './Noteitem'
 
-export default function Note() {
+export default function Note(props) {
     // Destructing the context provider values
     let { notes, fetchNotes, editNote } = useContext(noteContext)
     useEffect(() => {
@@ -17,16 +17,17 @@ export default function Note() {
     const updateNote = (note) => { 
         ref_function.current.click()
         setNote({ eid: note._id, etitle: note.title, edescription: note.description, etag: note.tag })
-        console.log(sNote.eid, sNote.etitle, sNote.edescription, sNote.etag)
+        // console.log(sNote.eid, sNote.etitle, sNote.edescription, sNote.etag)
 
     }
 
     let onClick = (e) => {
         if (sNote.etitle === "" || sNote.edescription === "") {
-            console.log("Note title is empty or note description is empty")
+            props.showAlert('Note Title or Note Description is empty','danger');
         }
         else {
             editNote(sNote.eid, sNote.etitle, sNote.edescription, sNote.etag)
+            props.showAlert('Note Updated Successfully','success');
         }
 
     }
@@ -81,7 +82,7 @@ export default function Note() {
                 </div>
                 {/* Looping over the notes  */}
                 {notes.map((note) => {
-                    return <Noteitem key={note._id} note={note} updateNote={updateNote} />
+                    return <Noteitem showAlert={props.showAlert} key={note._id} note={note} updateNote={updateNote} />
                 })}
             </div>
         </>

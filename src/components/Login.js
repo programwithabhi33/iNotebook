@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+function Login(props) {
+    const {showAlert} = props;
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     // This is useNavigate hook provide you to redirect
     let history = useNavigate();
@@ -25,9 +26,10 @@ function Login() {
 
             // Redirecting to the "/" using the useNavigate hook
             history("/")
+            showAlert('Successfully Loged In','success')
         }
         else{
-            alert("Invalid credentials")
+            showAlert('Invalid Credentials','danger')
         }
     }
     let onChange = (e) => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 
-function Signup() {
-
+function Signup(props) {
+  const {showAlert} = props;
   let [credentials, setCredentials] = useState({ name: "", email: "", password: "", retype: "" })
 
   // This is useNavigate hook provide you to redirect
@@ -27,10 +27,11 @@ function Signup() {
       if (res.success) {
         localStorage.setItem("authtoken", res.authToken)
         history("/")
+        showAlert('SignUp Successfully','success')
 
       }
       else {
-        alert("Invalid credentials")
+        showAlert('Some error occured during signup','danger')
       }
     }
     else {
