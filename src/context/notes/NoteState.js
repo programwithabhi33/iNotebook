@@ -2,9 +2,9 @@ import newContext from "./noteContext";
 import React, { useState } from 'react'
 
 
+
 const NoteState = (props) => {
   const host = "http://localhost:5000"
-
 
   let initialNote = []
 
@@ -20,7 +20,7 @@ const NoteState = (props) => {
       method: 'GET',
       headers: {
         "Content-type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6IjYyODY1MDVhZjEyYTE1NmUzNTA5NTYxMiJ9LCJpYXQiOjE2NTI5Njk1NjJ9.zflkpLezUBIjSv0kYx9odf5Us9HmEv13GD93Cewthmo"
+        "auth-token": localStorage.getItem('token'),
 
       },
     })
@@ -42,7 +42,7 @@ const NoteState = (props) => {
       method: 'POST',
       headers: {
         "Content-type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6IjYyODY1MDVhZjEyYTE1NmUzNTA5NTYxMiJ9LCJpYXQiOjE2NTI5Njk1NjJ9.zflkpLezUBIjSv0kYx9odf5Us9HmEv13GD93Cewthmo"
+        "auth-token": localStorage.getItem('authtoken'),
 
       },
       // Passing the arguments with JSON.stringify
@@ -62,7 +62,7 @@ const NoteState = (props) => {
       method: 'DELETE',
       headers: {
         "Content-type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6IjYyODY1MDVhZjEyYTE1NmUzNTA5NTYxMiJ9LCJpYXQiOjE2NTI5Njk1NjJ9.zflkpLezUBIjSv0kYx9odf5Us9HmEv13GD93Cewthmo"
+        "auth-token": localStorage.getItem('authtoken'),
 
       },
     })
@@ -82,7 +82,7 @@ const NoteState = (props) => {
       method: 'PUT',
       headers: {
         "Content-type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6IjYyODY1MDVhZjEyYTE1NmUzNTA5NTYxMiJ9LCJpYXQiOjE2NTI5Njk1NjJ9.zflkpLezUBIjSv0kYx9odf5Us9HmEv13GD93Cewthmo"
+        "auth-token": localStorage.getItem('authtoken'),
 
       },
       body: JSON.stringify({ title, description, tag })

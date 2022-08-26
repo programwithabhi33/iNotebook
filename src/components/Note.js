@@ -1,13 +1,21 @@
 import { React, useContext, useEffect, useRef, useState } from 'react'
-import { useHref } from 'react-router-dom';
+import { useHref,useNavigate } from 'react-router-dom';
 import noteContext from '../context/notes/noteContext'
 import Noteitem from './Noteitem'
 
 export default function Note(props) {
     // Destructing the context provider values
+
+    let history = useNavigate();
+
     let { notes, fetchNotes, editNote } = useContext(noteContext)
     useEffect(() => {
-        fetchNotes()
+        if(!localStorage.getItem('token')){
+            history("/")
+          }
+          else{
+              fetchNotes()
+          }
     }, []);
 
 
