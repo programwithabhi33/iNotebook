@@ -13,8 +13,9 @@ export default function Alert(props) {
     }
     return (
         <>
-            <div style={{ height: '50px' }}>
+            <div style={ {height: '150px' }}>
                 {/* The JSX converts into jsvascript calls so props.alert && the JSX */}
+                {/* It means two conditions has to true to run the above code */}
                 {props.alert &&
                     <div className={`alert alert-${props.alert.type}`} role="alert">
                         <strong>{toLowerCase(props.alert.type)}: </strong>{props.alert.msg}.
